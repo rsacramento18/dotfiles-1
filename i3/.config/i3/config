@@ -36,7 +36,7 @@ set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -i -q -fn "-benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-9" -w 200 -l 3 -x 25 -y 25 -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
+bindsym $mod+d exec dmenu_run -i -q -fn "Roboto Mono-20" -w 400 -l 3 -x 25 -y 25 -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -135,9 +135,6 @@ client.background       $bg
 #     height 25
 # }
 
-# Add a 5px border to all windows.
-for_window [class="^.*"] border normal 0
-
 # Float all windows by default.
 for_window [class="^.*"] floating enable
 
@@ -165,6 +162,9 @@ bindsym $mod+e sticky toggle
 font pango:lemon 11
 for_window [class=".*"] title_format "<span font='Artwiz Lemon 7'> > %title</span>"
 
+# Add a 5px border to all windows.
+for_window [class="^.*"] border normal 0
+
 # Media Keys
 
 # Pulse Audio controls
@@ -186,4 +186,10 @@ bindsym $mod+c move position center
 # Cycle wallpapers
 bindsym $mod+w exec "wal -i $HOME/Pictures/Wallpapers -o wal-set"
 exec wal -i "$(< "${HOME}/.cache/wal/wal")" -o "wal-set"
-exec termite
+
+# Laptop specific settings.
+new_window normal
+hide_edge_borders vertical
+gaps inner 0
+for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] floating disable

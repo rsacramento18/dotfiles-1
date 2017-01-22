@@ -29,10 +29,16 @@ alias sxiv="sxiv -b -s f"
 alias handbrake="ghb"
 
 # Use Roboto Mono on laptop.
-[[ "$HOSTNAME" == "rosebud" ]] && printf "\033]710;%s\007" "xft:Roboto Mono:size=20"
+if [[ "$HOSTNAME" == "rosebud" ]]; then
+    printf "\033]710;%s\007" "xft:Roboto Mono:size=20"
+    export GDK_SCALE=2
+    export QT_AUTO_SCREEN_SCALE_FACTOR=1
+fi
 
 # Import colorscheme from 'wal'
 [[ -z "$VTE_VERSION" ]] && (wal -r &)
 
 # Auto start X.
 [[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]] && exec startx -- vt1 &> /dev/null
+
+

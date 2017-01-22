@@ -1,0 +1,4 @@
+# Laptop specific settings.
+font pango:Roboto Mono 20
+for_window [class=".*"] title_format " > %title"
+for_window [class="^.*"] floating disable
